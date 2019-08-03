@@ -1,0 +1,14 @@
+<div class="pull-xs-right">
+  <small>
+    <span class="badge badge-success" *ngIf="cart.intemCount >0">
+    {{cart.intemCount}} item (s)
+    {{cart.cartPrice | currency: "USD$"}}
+    </span>
+    <span class="badge badge-success" *ngIf="cart.intemCount==0">
+      0
+    </span>
+    <button class="btn btn-warning btn-sm" [disabled]="cart.intemCount==0">
+      cart
+    </button>
+  </small>
+</div>
