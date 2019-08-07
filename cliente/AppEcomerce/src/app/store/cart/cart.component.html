@@ -1,3 +1,37 @@
-<p>
-  cart works!
-</p>
+<app-nav></app-nav>
+<!-- Page Content -->
+<div ng-controller="CartController" class="container">
+  <table class="table">
+      <thead class="thead-light">
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Sub</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let products of product">
+        <td>{{products.product.productName}}</td>
+        <td>{{products.product.MSRP | currency}}</td>
+        <td>
+          <input (change)="update(products.product,$event.target.value)" type="number" id="quantity_5d4aeec40be93" class="input-text qty text" step="1" min="1" max="20"
+            name="cart[f12f2b34a0c3174269c19e21c07dee68][qty]" value="{{products.quantity}}" title="Qty" size="4"
+            inputmode="numeric" />
+        </td>
+        <td>
+
+          {{products.quantity * products.product.MSRP | currency }}</td>
+        <td>
+          <button type="button"  (click)="delete(products.product)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+     <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="table-active">TOTAL {{cart.cartPrice | currency}}</td>
+     </tr>
+    </tbody>
+  </table>
+</div>

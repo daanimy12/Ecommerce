@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { StoreModule } from './store/store.module';
 import { ModelModule } from './model/model.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     StoreModule,
     ModelModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

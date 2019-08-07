@@ -1,3 +1,23 @@
-<p>
-  checkout works!
-</p>
+<div ng-controller="CartController" class="container">
+  <table class="table" ng-show="cartData.length > 0">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Sub</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="cart in carts">
+        <td>{{cart.productName}}</td>
+        <td>{{item.MSRP | currency}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.sub}}</td>
+        <td>
+          <button ng-click="remove($index)" class="btn btn-default">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

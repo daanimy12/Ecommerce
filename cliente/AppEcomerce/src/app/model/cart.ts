@@ -24,6 +24,26 @@ export class Cart {
             this.cartPrice += (l.quantity*l.product.MSRP)
         })
     }
+    clear(product:Product){
+        const line= this.lines.findIndex(line=> line.product.productCode== product.productCode);
+        if(line!= undefined){
+            this.lines.splice(line,1);
+            this.recalculate();
+        }
+    }
+    mos(){
+        return this.lines;
+    }
+    updatecart(product: Product, quantity: number ){
+        if(quantity!= undefined){
+            let selection= this.lines.find(ps=> ps.product.productCode==product.productCode);
+            if(selection){
+                selection.quantity=quantity;
+                this.recalculate();
+            }
+            
+        }
+    }
 }
 export class CartLine {
     constructor(public product: Product, public quantity: number) {

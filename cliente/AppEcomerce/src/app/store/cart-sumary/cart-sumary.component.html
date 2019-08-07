@@ -7,8 +7,8 @@
     <span class="badge badge-success" *ngIf="cart.intemCount==0">
       0
     </span>
-    <button class="btn btn-warning btn-sm" [disabled]="cart.intemCount==0">
-      cart
+    <button class="btn btn-warning btn-sm" [disabled]="cart.intemCount==0" routerLink="/cart"   >
+      <i class="fa fa-shopping-cart"></i>
     </button>
   </small>
 </div>
