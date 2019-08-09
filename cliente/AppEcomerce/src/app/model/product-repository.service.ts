@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from './product';
 import { ProductDatasourceService } from './product-datasource.service';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +43,9 @@ private vendor: string[]=[];
 
    getVendor(): string[]{
      return this.vendor;
+   }
+
+   getdetail(id){
+    return this.getProducts().find(e=>e.productCode===id);
    }
 }

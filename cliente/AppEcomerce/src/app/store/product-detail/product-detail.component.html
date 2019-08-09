@@ -1,0 +1,12 @@
+<app-nav></app-nav>
+<!-- Page Content -->
+<div class="card">
+    <div class="card-header">
+        {{productid.productName}}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{productid.MSRP | currency }}</h5>
+      <p class="card-text">{{productid.productDescription | slice:0:150 }}</p>
+      <a href="#" routerLink="/store" routerLinkActive="router-link-active" class="btn btn-primary">preview</a>
+    </div>
+  </div>
