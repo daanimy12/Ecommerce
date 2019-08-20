@@ -4,6 +4,8 @@ import { Product } from '../model/product';
 import { Cart } from '../model/cart';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { OrderRepositoryService } from '../model/order-repository.service';
+import { Order } from '../model/order';
 
 @Component({
   selector: 'app-store',
@@ -17,27 +19,29 @@ public selectedVendor=null;
 public productPerpage=12;
 public selectedPage=1;
 
-  constructor(private productRepoServive:ProductRepositoryService, private cart:Cart, private router: Router,private route: ActivatedRoute) { }
+  constructor(private productRepoService:ProductRepositoryService, private orderRepoService:OrderRepositoryService,private cart:Cart, private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit() { 
 
   };
+ 
   get products(): Product[]{
     const pageIndex=(this.selectedPage - 1)*this.productPerpage;
-    return this.productRepoServive
+    return this.productRepoService
     .getProducts(this.SelectedCategory,this.selectedScale,this.selectedVendor)
     .slice(pageIndex,pageIndex+this.productPerpage);
+  
   };
-
+  
   get categories(): string[]{
-    return this.productRepoServive.getCategories();
+    return this.productRepoService.getCategories();
   };
 
   get scales(): string[]{
-    return this.productRepoServive.getScales();
+    return this.productRepoService.getScales();
   }
   get vendors(): string[]{
-    return this.productRepoServive.getVendor();
+    return this.productRepoService.getVendor();
   }
   changeCategory(newCategory: string=null){
     this.selectedPage = 1;
@@ -52,7 +56,7 @@ public selectedPage=1;
     this.selectedVendor=newVendor
   }
   get pageNumber(): number[]{
-    return Array(Math.ceil(this.productRepoServive.getProducts(this.SelectedCategory,this.selectedScale,this.selectedVendor).length/this.productPerpage))
+    return Array(Math.ceil(this.productRepoService.getProducts(this.SelectedCategory,this.selectedScale,this.selectedVendor).length/this.productPerpage))
     .fill(0).map((x,i)=>i+1)
   };
   changuePague(newNumber :number){

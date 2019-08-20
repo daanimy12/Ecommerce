@@ -3,6 +3,26 @@
 namespace app\Models;
 class  OrderModel extends Models{
 
+    public function selectOrder(){
+        $sth=$this->db->pdo->prepare("select * from orderdetails");
+        $sth->execute();
+        $registros=$sth->fetchAll(\PDO::FETCH_ASSOC);
+        if(!is_null($sth->errorInfo()[1])){
+            return array(
+                'Error'=>false,
+                'description'=>$sth->errorInfo()[2]
+            );
+        }else if(empty($registros)){
+            return array(
+                'noFound'=>true,
+                'description'=>'The table is empty'
+            );
+        }
+            return array(
+            'success'=>true,
+            'description'=> 'The orderDetails were found',
+            'orders'=>$registros);
+    }
     public function insertOrder($order){
         
         $lines=$order['cart']['lines'];

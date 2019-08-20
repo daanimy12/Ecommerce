@@ -1,0 +1,11 @@
+<app-nav></app-nav>
+  <!-- Page Content -->
+  <div class="alert alert-success" role="alert"  *ngFor="let order of orders">
+      <h4 class="alert-heading">order number: {{order.orderNumber}}</h4>
+      <p>product code: {{order.productCode}}</p>
+      <p>quantityOrdered: {{order.quantityOrdered}}</p>
+      <p>priceEach: {{order.priceEach}}</p>
+
+      <hr>
+      <p class="mb-0">orderLineNumber: {{order.orderLineNumber}}</p>
+    </div>
